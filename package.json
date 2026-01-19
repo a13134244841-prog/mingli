@@ -1,5 +1,1 @@
-{
-  "dependencies": {
-    "@google/generative-ai": "^0.22.0"
-  }
-}
+const model = genAI.getGenerativeModel({ model: "gemini-2.5-pro" });
