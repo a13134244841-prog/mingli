@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>子平命理 AI 研究助手</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-stone-100 text-stone-800 font-serif">
+    <div class="max-w-2xl mx-auto py-10 px-4">
+        <header class="text-center mb-10 border-b-2 border-stone-300 pb-6">
+            <h1 class="text-3xl font-bold text-stone-900">子平古法 AI 助手</h1>
+            <p class="mt-2 text-stone-600">基于五大命理经典深度解析</p>
+        </header>
+
+        <div id="chat-box" class="bg-white rounded-lg shadow-inner p-6 h-96 overflow-y-auto mb-6 space-y-4 border border-stone-200">
+            <div class="text-left"><span class="bg-stone-200 px-3 py-1 rounded-full text-sm">AI</span> <p class="mt-1 bg-stone-50 p-3 rounded-lg border border-stone-200">缘主好，请提供出生信息，我将依古法为你推演。</p></div>
+        </div>
+
+        <div class="flex gap-2">
+            <input id="user-input" type="text" placeholder="输入出生日期（如：1999年4月13日早8点）" class="flex-1 p-3 border-2 border-stone-300 rounded-lg focus:outline-none focus:border-stone-500">
+            <button onclick="sendMessage()" class="bg-stone-800 text-white px-6 py-3 rounded-lg hover:bg-stone-700 transition">发送</button>
+        </div>
+    </div>
+
+    <script>
+        function sendMessage() {
+            const input = document.getElementById('user-input');
+            const chatBox = document.getElementById('chat-box');
+            if (input.value.trim() === "") return;
+
+            // 用户消息展示
+            chatBox.innerHTML += `<div class="text-right"><span class="bg-stone-800 text-white px-3 py-1 rounded-full text-sm">你</span><p class="mt-1 bg-stone-100 p-3 rounded-lg text-right inline-block">${input.value}</p></div>`;
+            
+            // 此处应调用后端 API 接口，返回基于五本书的回答
+            // 示例逻辑：
+            setTimeout(() => {
+                chatBox.innerHTML += `<div class="text-left"><span class="bg-stone-200 px-3 py-1 rounded-full text-sm">AI</span><p class="mt-1 bg-stone-50 p-3 rounded-lg border border-stone-200">正在查阅《子平真诠》与《穷通宝鉴》进行排盘推演...</p></div>`;
+                chatBox.scrollTop = chatBox.scrollHeight;
+            }, 1000);
+
+            input.value = "";
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+    </script>
+</body>
+</html>
